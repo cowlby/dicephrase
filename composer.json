@@ -1,0 +1,33 @@
+{
+    "name": "cowlby/dicephrase",
+    "description": "Diceware Password Helper",
+    "authors": [
+        {
+            "name": "Jose Prado",
+            "email": "cowlby@me.com"
+        }
+    ],
+
+    "minimum-stability": "dev",
+
+    "require": {
+        "silex/silex" : "~1.0",
+        "symfony/config" : "~2.3",
+        "symfony/console" : "~2.3",
+        "symfony/twig-bridge": "~2.3",
+        "symfony/form": "~2.3",
+        "symfony/translation": "~2.3",
+        "symfony/validator": "~2.3",
+        "symfony/yaml": "~2.3",
+        "twig/twig": ">=1.8.0,<2.0-dev"
+    },
+
+    "autoload" : {
+        "psr-0": {
+            "Cowlby": "src/"
+        }
+    },
+
+    "repositories": [
+    ]
+}

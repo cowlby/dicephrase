@@ -1,0 +1,95 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Dicephrase' %}
+
+{% block page_id 'home' %}
+
+{% block content %}
+
+{% if passphrase is defined and passphrase is not empty %}
+<div class="alert alert-success">
+    <strong>Generated Passphrase:</strong> {{ passphrase }}
+</div>
+{% endif %}
+
+{{ form_start(form) }}
+
+    {{ form_errors(form) }}
+    <fieldset>
+
+        <legend>Enter your dice rolls</legend>
+
+        {{ form_errors(form.rolls) }}
+
+        <div id="form_rolls" data-prototype="{{ form_widget(form.rolls.vars.prototype) | e }}">
+        {% for rollField in form.rolls %}
+            <div class="control-group{% if rollField.vars.errors is not empty %} error{% endif %}">
+
+                <div class="controls">
+                    <div class="input-append">
+                        {{ form_widget(rollField, { 'attr': { 'class': 'input-small' }}) }}
+                        <a class="btn delete_roll btn-warning">Remove</a>
+                    </div>
+                    {{ form_errors(rollField) }}
+                </div>
+
+            </div>
+        {% endfor %}
+        </div>
+
+        <a class="btn btn-success" href="#" id="add_roll">Add another roll</a>
+
+        <div class="form-actions">
+            {{ form_widget(form.generate, {'attr': {'class': 'btn btn-primary'}}) }}
+        </div>
+    </fieldset>
+{{ form_end(form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+
+    // keep track of how many email fields have been rendered
+    var collectionHolder = jQuery('#form_rolls');
+    var fieldCount = {{ form.rolls | length }};
+
+    jQuery(document).ready(function() {
+
+        jQuery('.delete_roll').on('click', function(e) {
+            console.log(this);
+            jQuery(this).parent().parent().remove();
+            fieldCount--;
+            return false;
+        });
+
+        jQuery('#add_roll').click(function() {
+
+            var prototype = collectionHolder.attr('data-prototype');
+            prototype = prototype.replace(/__name__/g, fieldCount);
+
+            // create a new list element and add it to the list
+            var controlGroup = jQuery('<div class="control-group"></div>');
+            var controls = jQuery('<div class="controls"></div>');
+            var inputAppend = jQuery('<div class="input-append"></div>');
+            var deleteButton = jQuery('<a class="btn delete_roll btn-warning">Remove</a>');
+            var inputField = jQuery(prototype);
+
+            inputAppend.append(inputField).append(deleteButton);
+            controls.append(inputAppend);
+            controlGroup.append(controls);
+
+            deleteButton.on('click', function(e) {
+                controlGroup.remove();
+                fieldCount--;
+                return false;
+            });
+
+            collectionHolder.append(controlGroup);
+            fieldCount++;
+
+            return false;
+        });
+    })
+</script>
+{% endblock %}

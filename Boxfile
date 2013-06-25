@@ -1,0 +1,36 @@
+web1:
+    # Name
+    name: dicephrase-web
+
+    # General settings
+    shared_writable_dirs:
+        - /resources/cache
+        - /resources/logs
+
+    # Web settings
+    document_root: /web
+    default_gateway: app.php
+    index_list: [app.php]
+
+    # PHP Settings
+    php_display_errors: "1"
+    php_session_autostart: Off
+    php_short_open_tag: Off
+    magic_quotes_gpc: Off
+    php_extensions:
+        - intl
+        - curl
+        - zip
+
+    # Hooks
+    after_build:
+        - "bash bin/install_composer.sh"
+        - "bash bin/create_htaccess.sh"
+
+db1:
+  name: dicephrase-db
+  type: mysql
+
+cache1:
+  name: dicephrase-cache
+  type: memcached
