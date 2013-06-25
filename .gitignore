@@ -1,0 +1,17 @@
+/vendor
+
+composer.phar
+
+composer.lock
+
+/resources/cache
+
+/resources/logs
+
+/web/.htaccess
+
+/.buildpath
+
+/.project
+
+/.settings
