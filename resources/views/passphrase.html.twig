@@ -6,20 +6,9 @@
 
 {% block content %}
 
-    <h1>Generated Passphrase</h1>
-
     <div class="alert alert-success">
-        <h2 id="passphrase">{{ diceware.passphrase }}</h2>
+        <h2 id="passphrase">{{ passphrase|join(' ') }}</h2>
     </div>
-
-    {% for i, word in diceware.words %}
-        <div class="roll-result">
-        {% for roll in word.rolls %}
-            <img src="{{ app.request.basepath }}/img/dice{{ roll }}.png" class="img-polaroid">
-        {% endfor %}
-        {{ word.word }}
-        </div>
-    {% endfor %}
 
 {% endblock %}
 

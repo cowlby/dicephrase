@@ -1,7 +1,5 @@
 <?php
 
-use Symfony\Component\Yaml\Yaml;
-
 $app['name'] = stripcslashes(getenv('APP_NAME'));
 
 // Debug
@@ -14,7 +12,7 @@ $app['session.default_locale'] = $app['locale'];
 $app['translator.domains'] = array();
 
 // Cache
-$app['cache.path'] = __DIR__.'/../cache';
+$app['cache.path'] = __DIR__.'/../../cache';
 
 // Http cache
 $app['http_cache.cache_dir'] = $app['cache.path'].'/http';
@@ -30,5 +28,4 @@ $app['session.storage.options'] = array('name' => 'DICEPHRASESESSID');
 $app['twig.path'] = __DIR__.'/../views';
 
 // Dicephrase
-$app['diceware.dictionary.beale'] = __DIR__ . '/../diceware/beale.wordlist.asc';
-$app['diceware.dictionary.standard'] = __DIR__ . '/../diceware/diceware.wordlist.asc';
+$app['diceware.wordlist.path'] = __DIR__ . '/../diceware/diceware.wordlist.asc';

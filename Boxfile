@@ -4,13 +4,13 @@ web1:
 
     # General settings
     shared_writable_dirs:
-        - /resources/cache
-        - /resources/logs
+        - /cache
+        - /logs
 
     # Web settings
     document_root: /web
-    default_gateway: app.php
-    index_list: [app.php]
+    default_gateway: index.php
+    index_list: [index.php]
 
     # PHP Settings
     php_display_errors: "1"
@@ -18,9 +18,10 @@ web1:
     php_short_open_tag: Off
     magic_quotes_gpc: Off
     php_extensions:
-        - intl
         - curl
-        - zip
+
+    #newrelic
+    php_newrelic_framework: symfony
 
     # Hooks
     after_build:
