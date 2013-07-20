@@ -19,6 +19,7 @@ web1:
     magic_quotes_gpc: Off
     php_extensions:
         - curl
+        - zip
 
     #newrelic
     php_newrelic_framework: symfony
