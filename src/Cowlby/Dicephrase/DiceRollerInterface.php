@@ -1,4 +1,5 @@
 <?php
+
 namespace Cowlby\Dicephrase;
 
 interface DiceRollerInterface

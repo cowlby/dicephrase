@@ -2,7 +2,7 @@
 
 namespace Cowlby\Dicephrase;
 
-class WordList implements WordListInterface
+class FileWordList implements WordListInterface
 {
     protected $dictionary;
 
@@ -30,7 +30,7 @@ class WordList implements WordListInterface
 
     public function getWord($roll)
     {
-        return $this->dictionary[$roll];
+        return isset($this->dictionary[$roll]) ? $this->dictionary[$roll] : null;
     }
 
     public function offsetExists($offset)

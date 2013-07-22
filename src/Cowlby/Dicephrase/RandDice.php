@@ -2,7 +2,7 @@
 
 namespace Cowlby\Dicephrase;
 
-class Dice implements DiceInterface
+class RandDice implements DiceInterface
 {
     public function roll()
     {
