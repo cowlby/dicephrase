@@ -1,31 +1,16 @@
 <?php
 
-$app['name'] = stripcslashes(getenv('APP_NAME'));
+$app['name'] = stripcslashes(getenv('APP_NAME')) ?: 'dicephrase';
 
 // Debug
 $app['debug'] = false;
 
-// Locale
-$app['locale'] = 'en';
-$app['locale_fallback'] = 'en';
-$app['session.default_locale'] = $app['locale'];
-$app['translator.domains'] = array();
-
 // Cache
 $app['cache.path'] = __DIR__.'/../../cache';
 
-// Http cache
-$app['http_cache.cache_dir'] = $app['cache.path'].'/http';
-$app['http_cache.options'] = array(
-    'debug' => $app['debug'],
-    'stale_if_error' => 0
-);
-
-// Session
-$app['session.storage.options'] = array('name' => 'DICEPHRASESESSID');
-
-// Twig
-$app['twig.path'] = __DIR__.'/../views';
-
 // Dicephrase
 $app['diceware.wordlist.path'] = __DIR__ . '/../diceware/diceware.wordlist.asc';
+$app['diceware.dice.class']     = stripcslashes(getenv('DICEPHRASE__DICE__CLASS')) ?: 'Cowlby\Dicephrase\RandDice';
+$app['diceware.roller.class']   = 'Cowlby\Dicephrase\DiceRoller';
+$app['diceware.wordlist.class'] = stripcslashes(getenv('DICEPHRASE__WORDLIST__CLASS')) ?: 'Cowlby\Dicephrase\FileWordList';
+$app['diceware.class']          = 'Cowlby\Dicephrase\PassphraseMaker';
