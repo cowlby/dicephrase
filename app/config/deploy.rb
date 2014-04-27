@@ -2,7 +2,7 @@
 logger.level = Logger::DEBUG
 
 set :application, "dicephrase"
-set :domain,      "dicephrase.pw"
+set :domain,      "dicephrase.com"
 set :deploy_to,   "/var/www/#{domain}"
 
 # Repository
