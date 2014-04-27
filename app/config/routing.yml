@@ -1,0 +1,3 @@
+prado_digital_dicephrase:
+    resource: "@PradoDigitalDicephraseBundle/Resources/config/routing.xml"
+    prefix:   /

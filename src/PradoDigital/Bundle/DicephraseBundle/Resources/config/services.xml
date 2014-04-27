@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="prado_digital.dicephrase.diceware.roller.class">PradoDigital\Bundle\DicephraseBundle\Diceware\DiceRoller</parameter>
+        <parameter key="prado_digital.dicephrase.diceware.wordlist.class">PradoDigital\Bundle\DicephraseBundle\Diceware\FileWordList</parameter>
+        <parameter key="prado_digital.dicephrase.diceware.class">PradoDigital\Bundle\DicephraseBundle\Diceware\PassphraseMaker</parameter>
+        <parameter key="prado_digital.dicephrase.diceware.default_length">6</parameter>
+        <parameter key="prado_digital.dicephrase.diceware.default_separator"> </parameter>
+    </parameters>
+
+    <services>
+        <service id="prado_digital.dicephrase.diceware.dice" class="%prado_digital.dicephrase.diceware.dice.class%">
+        </service>
+        <service id="prado_digital.dicephrase.diceware.wordlist" class="%prado_digital.dicephrase.diceware.wordlist.class%">
+            <argument>%prado_digital.dicephrase.diceware.wordlist.path%</argument>
+        </service>
+        <service id="prado_digital.dicephrase.diceware.roller" class="%prado_digital.dicephrase.diceware.roller.class%">
+            <argument type="service" id="prado_digital.dicephrase.diceware.dice" />
+        </service>
+        <service id="prado_digital.dicephrase.diceware" class="%prado_digital.dicephrase.diceware.class%">
+            <argument type="service" id="prado_digital.dicephrase.diceware.wordlist" />
+            <argument type="service" id="prado_digital.dicephrase.diceware.roller" />
+        </service>
+    </services>
+
+</container>

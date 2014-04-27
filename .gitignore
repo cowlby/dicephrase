@@ -1,18 +1,26 @@
-/vendor
+# Composer
+/vendor/
+/composer.phar
 
-composer.phar
-
-composer.lock
-
-/resources/cache
-
-/resources/logs
-
-/web/.htaccess
-
+# Zend Studio
+/.project
+/.settings
 /.buildpath
 
-/.project
+# Symfony
+/app/bootstrap*
+/app/data/*.db3
+/app/cache
+/app/logs
+/app/var
+/web/bundles
+/web/assets
+/web/assetic
+/web/js
+/web/css
+*.php~
 
-/.settings
-/phpunit.xml
+# Configuration files
+/app/config/parameters.ini
+/app/config/parameters.yml
+/web/.htaccess
